@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\usersController;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +15,6 @@ use App\Http\Controllers\usersController;
 |
 */
 
-Route::post('/TataTertib/post', 'usersController@store');
+Route::post('/register', 'App\Http\Controllers\userController@store');
+Route::post('/login', 'App\Http\Controllers\userController@login');
+Route::post('logout', 'App\Http\Controllers\userController@logout');

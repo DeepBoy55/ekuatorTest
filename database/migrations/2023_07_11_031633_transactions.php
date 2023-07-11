@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('product_id');
+            $table->foreignId('user_id');
+            $table->foreignId('product_id');
             $table->integer('price');
             $table->integer('quantity');
             $table->integer('admin_fee');
