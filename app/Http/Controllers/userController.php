@@ -39,8 +39,11 @@ class userController extends Controller
                 if($userLogin){
 
                 if(password_verify($request->password, $userLogin->password)) {
+                    $token = $userLogin->createToken('api-token')->plainTextToken;
                         return response()->json([
+
                             'Code' => 200,
+                            'Token' => $token,
                             'Message' => 'Welcome '.$userLogin->name,
                             'data' => $userLogin
                         ]);
@@ -62,6 +65,7 @@ class userController extends Controller
 
     public function logout()
     {
+        // $request->user()->tokens()->delete();
         Auth::logout();
         return response()->json([
             'status' => 'success',

@@ -8,5 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-    protected $table = "transactions";
+    protected $table = "transaction";
+
+    protected $fillable = [
+        'user_id',
+        'product_id',
+        'price',
+        'quantity',
+        'admin_fee',
+        'tax',
+        'total',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
